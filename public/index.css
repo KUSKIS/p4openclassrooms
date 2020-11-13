@@ -1,0 +1,210 @@
+/*-----------body--------------*/
+
+body{
+    background-color: white;
+}
+
+/*------------nav----------------*/
+
+.primary-color, ul.stepper li.active a .circle, ul.stepper li.completed a .circle {
+    position: fixed;
+    height: 10vh;
+    width: 100%;
+    z-index: 99;
+    background-color: #264d73!important;
+}
+
+
+/*-------------header-------------*/
+
+#headercontainer{
+    padding-top: 10vh;
+}
+#headercontainer {
+    display: flex;
+    position: relative;
+}
+#headercontainer h1 {
+    display: flex;
+    position: absolute;
+    top: 80%!important;
+    font-weight: bolder;
+    font-size: 3.5em;
+    text-align: center;
+}
+#headercontainer h2{
+    display: flex;
+    position: absolute;
+    font-size: 3em;
+    top: 10%!important;
+}
+#headercontainer .buttonalign{
+    display: flex;
+    position: absolute;
+    top: 60%;
+    left: 38%;
+}
+h1 {
+    color: red!important;
+}
+.imgview {
+    width: 20%;
+}
+
+
+/*-----------home------------*/
+
+
+.btn-info{
+    background-color:  #264d73!important;
+}
+#home{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+strong{
+    color: #264d73!important;
+}
+.news-tile .card-title {
+    position: absolute;
+    bottom: 15px;
+    left: 40px;
+}
+
+.rgba-stylish-strong {
+    background-color: rgba(62, 69, 81, .5);
+}
+.titlelist {
+    text-align: center;
+}
+/*img .imgview {
+    display: flex;
+    position: absolute;
+    left: 0%;
+    top: 30%;
+
+}*/
+/*.viewimg {
+    display: flex;
+    position: relative;
+}*/
+
+
+
+/*-----------footer-------------*/
+
+hr{
+    width: 60px;
+    background-color: #264d73!important;
+}
+
+/*----------login--------------*/
+
+.logincontent{
+    padding-top: 10vh!important;
+}
+#login h3{
+    color: #264d73!important;
+}
+
+
+/*-------------intro chapters-------------*/
+
+
+.oneChapter{
+    padding-top: 10%!important;
+}
+
+h4 strong{
+    color: white!important;
+}
+/*.container mt-2{
+    display: flex;
+    flex-direction: column!important;
+}
+/*#intro {
+    display: flex;
+    flex-direction: row!important;
+    flex-wrap: nowrap;
+
+
+}
+.introimg1, .introimg2, .introimg3, .introimg4{
+    width: 200%!important;
+}*/
+
+/*-------------written------------------*/
+
+.containwritten{
+    padding-top: 10%!important;
+    /*background-image: url(public/image/route.jpg);*/
+}
+
+#containwritten h5{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 1%;
+}
+#containwritten form{
+    margin-left: 60%;
+    width: 800px;
+    height: 600px;
+}
+
+/*------------formulaire commentaire-------------*/
+
+.commentform {
+    padding-top: 10%!important;
+}
+
+/*---------------tableau chapitre-------------*/
+
+.tablepost{
+    padding-top: 10%!important;
+}
+
+/*------------formulaire de confirmation de suppression----------*/
+
+.deleteform{
+    padding-top: 10%!important;
+}
+.chapterdelete{
+    padding-top: 10%!important;
+}
+.chapterupdate{
+    padding-top: 10%!important;
+}
+.containmodifwritten{
+    padding-top: 10%!important;
+}
+.tablecomment{
+    padding-top: 10%!important;
+}
+.commentDelete{
+    padding-top: 10%!important;
+}
+
+/*------------mobile responsive------------*/
+
+@media screen and (max-width: 425px){
+    #headercontainer h1{
+        font-size: 1.5em;
+    }
+    #headercontainer h2{
+        font-size: 1em;
+    }
+    #headercontainer button{
+        font-size: 0.5em;
+        left: -30%;
+    }
+    .containwritten{
+        padding-top: 10vh;
+    }
+    .containwritten form{
+        margin-left: 0%;
+        width: 100%;
+        height: auto;
+    }
+}
+
