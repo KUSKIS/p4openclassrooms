@@ -26,7 +26,7 @@
                     <div class="d-flex justify-content-between align-items-center mt-3">
                         <div class="d-flex flex-row">
                             <button type="button" class="btn btn-fb btn-sm py-1 px-2 m-0 mr-2"><i class="far fa-thumbs-up pr-1"></i>j'aime</button>
-                            <a href=""><button type="button" class="btn btn-info btn-sm py-1 px-2 m-0 mr-2"><i class="far fa-comment pr-1"></i>je commente</button></a>
+                            <a href="post&createComment&id=<?php echo $chapter['id'] ?>"><button type="button" class="btn btn-info btn-sm py-1 px-2 m-0 mr-2"><i class="far fa-comment pr-1"></i>je commente</button></a>
                         </div>
                         <div class="d-flex flex-column pl-3">
                             <p class="small text-muted mb-0">135 likes - 7 comments</p>

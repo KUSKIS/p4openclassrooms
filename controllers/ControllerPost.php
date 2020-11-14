@@ -17,9 +17,13 @@ class ControllerPost
             throw new Exception("Page introuvable", 1);
         } elseif (isset($_GET['createPost'])) {
             $this->createOnePost();
-        } elseif (isset($_GET['status']) && isset($_GET['status']) == "new") {
+        } elseif (isset($_GET['createComment'])) {
+            $this->createOneComment();
+        }elseif (isset($_GET['status']) && isset($_GET['status']) == "new") {
             $this->edit();
-        } else {
+        } elseif (isset($_GET['etat']) && isset($_GET['etat']) == "newcomment") {
+            $this->registerOneComment();
+        }else {
             $this->chapter();
         }
 
@@ -56,5 +60,24 @@ class ControllerPost
         $chapter = $this->postManager->createChapter();
         $this->_view = new View('CreatePost');
         $this->_view->generate(array('chapter' => $chapter));
+    }
+
+    public function createOneComment()
+    {
+
+        if (isset($_GET['createComment'])) {
+
+            $this->view = new View('CreateComment');
+            $this->view->generateForm();
+        }
+    }
+
+    public function registerOneComment()
+    {
+
+        $this->commentManager = new CommentManager();
+        $comment = $this->commentManager->insertComment();
+        $this->_view = new View('CreateComment');
+        $this->_view->generate(array('comments' => $comment));
     }
 }
