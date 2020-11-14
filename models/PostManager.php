@@ -46,6 +46,24 @@ class PostManager extends Model
         $req->closeCursor();
     }
 
+    protected function updatePost()
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare(' UPDATE chapters SET chap_title = :chap_title, chap_content = :chap_content, chap_date_modif = NOW()
+        WHERE id = :id ');
+        $req->execute(array('id' => $_POST['id'], 'chap_title' => $_POST['chap_title'], 'chap_content' => $_POST['chap_content']));
+        $chap_date_modif = date('d-m-Y H:i:s');
+        $req->closeCursor();
+    }
+
+    protected function deletePost()
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare(' DELETE FROM chapters WHERE id = ? ');
+        $req->execute(array($_POST['id']));
+        $req->closeCursor();
+    }
+
 
     public function getListChapters()
     {
@@ -61,6 +79,17 @@ class PostManager extends Model
     {
         return $this->createPost('chapters', 'Chapter');
     }
+
+    public function updateChapter()
+    {
+        return $this->updatePost('chapters', 'Chapter');
+    }
+
+    public function deleteChapter()
+    {
+        return $this->deletePost('chapters', 'Chapter');
+    }
+
 
 
 
