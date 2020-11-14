@@ -84,9 +84,6 @@
 
 <?php foreach ($chapters as $chapter) : ?>
 
-
-
-
     <div class="container mt-5 py-5 z-depth-1 grey lighten-4">
         <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
 
@@ -100,7 +97,7 @@
                     <div class="view overlay z-depth-1-half">
                         <img src="public/image/maisonabandonnee.jpg" class="img-fluid" alt="">
 
-                        <a href="">
+                        <a href="Post&id=<?= $chapter->id() ?>">
                             <div class="mask rgba-white-light"></div>
                         </a>
                     </div>
@@ -116,7 +113,7 @@
                     <p class="text-muted">publié le <?= $chapter->chap_date_info() ?><br>
 
 
-                        <a class="btn btn-info btn-md ml-0" href="" role="button">Lire le chapitre</a>
+                        <a class="btn btn-info btn-md ml-0" href="Post&id=<?= $chapter->id() ?>" role="button">Lire le chapitre</a>
 
                 </div>
 
@@ -130,6 +127,5 @@
         </section>
         <!--Section: Content-->
     </div>
-
 
 <?php endforeach; ?>
