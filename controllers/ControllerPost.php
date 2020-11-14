@@ -15,6 +15,10 @@ class ControllerPost
     {
         if (isset($url) && count($url) < 1) {
             throw new Exception("Page introuvable", 1);
+        } elseif (isset($_GET['createPost'])) {
+            $this->createOnePost();
+        } elseif (isset($_GET['status']) && isset($_GET['status']) == "new") {
+            $this->edit();
         } else {
             $this->chapter();
         }
@@ -35,5 +39,22 @@ class ControllerPost
             $this->view = new View('SinglePost');
             $this->view->generate(array('chapter' => $chapter, 'comments' => $comments));
         }
+    }
+
+    public function createOnePost()
+    {
+        if (isset($_GET['createPost'])) {
+
+            $this->_view = new View('CreatePost');
+            $this->_view->generateForm();
+        }
+    }
+
+    public function edit()
+    {
+        $this->postManager = new PostManager();
+        $chapter = $this->postManager->createChapter();
+        $this->_view = new View('CreatePost');
+        $this->_view->generate(array('chapter' => $chapter));
     }
 }
