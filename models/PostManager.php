@@ -37,6 +37,15 @@ class PostManager extends Model
         $chapter->closeCursor();
     }
 
+    protected function createPost()
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare(' INSERT INTO  chapters (chap_title, chap_content, chap_date_info, chap_date_modif) VALUES (?, ?, NOW(), NOW())');
+        $req->execute(array($_POST['chap_title'], $_POST['chap_content']));
+
+        $req->closeCursor();
+    }
+
 
     public function getListChapters()
     {
@@ -48,6 +57,10 @@ class PostManager extends Model
         return $this->getPost('chapters', 'Chapter');
     }
 
+    public function createChapter()
+    {
+        return $this->createPost('chapters', 'Chapter');
+    }
 
 
 
