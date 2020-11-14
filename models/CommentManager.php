@@ -21,11 +21,24 @@ class CommentManager extends Model
         $comments->closeCursor();
     }
 
+    protected function addComment()
+    {
+        $db = $this->dbConnect();
+        $comment = $db->prepare(' INSERT INTO comments(chapter_id, com_user, com_content, com_date) VALUES (?, ?, ?, NOW())');
+        $comment->execute(array($_POST['chapter_id'], $_POST['com_user'], $_POST['com_content']));
+        $comment->closeCursor();
+    }
+
 
 
     public function getComments()
     {
         return $this->getPostComments('comments', 'Comment');
+    }
+
+    public function insertComment()
+    {
+        return $this->addComment('comments', 'Comment');
     }
 
 
