@@ -8,6 +8,7 @@ class ControllerHome
 {
 
     private $PostManager;
+    private $commentManager;
     private $view;
 
     public function __construct() //retrait parametre $url
@@ -16,11 +17,14 @@ class ControllerHome
             throw new Exception("Page introuvable", 1);
         } elseif (isset($_GET['tablePost'])) {
             $this->readAllPosts();
-        }else {
+        } elseif (isset($_GET['tableComment'])) {
+            $this->listAllComments();
+        } else {
             $this->listChapters();
         }
 
         $this->chapterManager = new PostManager();
+        $this->commentManager = new CommentManager();
     }
 
 
@@ -40,6 +44,17 @@ class ControllerHome
             $chapters = $this->postManager->getListChapters();
             $this->view = new View('TablePost');
             $this->view->generate(array('chapters' => $chapters));
+        }
+    }
+
+    public function listAllComments()
+    {
+        if (isset($_GET['tableComment'])) {
+
+            $this->commentManager = new CommentManager();
+            $comments = $this->commentManager->getListComments();
+            $this->view = new View('TableComment');
+            $this->view->generate(array('comments' => $comments));
         }
     }
 

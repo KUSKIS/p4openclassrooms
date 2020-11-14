@@ -29,6 +29,31 @@ class CommentManager extends Model
         $comment->closeCursor();
     }
 
+    protected function listComments()
+    {
+        $db = $this->dbConnect();
+        $var = [];
+        $req = $db->query(' SELECT * FROM  comments  ORDER BY id desc ');
+        $req->execute();
+        //on crée la variable data qui contient les données
+
+        while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+            //var contiendra les donnees sous forme d'objet
+            $var[] = new Comment($data);
+        }
+
+        return $var;
+        $req->closeCursor(); //on maintient la requete
+
+    }
+
+    protected function deleteComment()
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare(' DELETE FROM comments WHERE id = ? ');
+        $req->execute(array($_POST['id']));
+        $req->closeCursor();
+    }
 
 
     public function getComments()
@@ -39,6 +64,16 @@ class CommentManager extends Model
     public function insertComment()
     {
         return $this->addComment('comments', 'Comment');
+    }
+
+    public function getListComments()
+    {
+        return $this->listComments('comments', 'Comment');
+    }
+
+    public function deleteCom()
+    {
+        return $this->deleteComment('comments', 'Comment');
     }
 
 
