@@ -24,9 +24,28 @@ class PostManager extends Model
 
     }
 
+    protected function getPost()
+    {
+        $db = $this->dbConnect();
+        $chapter = $db->prepare('  SELECT id, chap_title, chap_content, chap_date_info, chap_date_modif  FROM
+         chapters  WHERE id = ? ');
+        $chapter->execute(array($_GET['id']));
+        $chap_date_info = date('d-m-Y H:i:s');
+        $chap_date_modif = date('d-m-Y H:i:s');
+        if ($chapter->rowCount() == 1);
+        return $chapter->fetch();
+        $chapter->closeCursor();
+    }
+
+
     public function getListChapters()
     {
         return $this->getAll('chapters', 'Chapter');
+    }
+
+    public function getChapter()
+    {
+        return $this->getPost('chapters', 'Chapter');
     }
 
 
