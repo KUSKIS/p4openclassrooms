@@ -17,10 +17,18 @@ class ControllerPost
             throw new Exception("Page introuvable", 1);
         } elseif (isset($_GET['createPost'])) {
             $this->createOnePost();
+        } elseif (isset($_GET['updateChapter'])) {
+            $this->updateChap();
+        } elseif (isset($_GET['deletePost'])) {
+            $this->deleteOnePost();
         } elseif (isset($_GET['createComment'])) {
             $this->createOneComment();
-        }elseif (isset($_GET['status']) && isset($_GET['status']) == "new") {
+        } elseif (isset($_GET['status']) && isset($_GET['status']) == "new") {
             $this->edit();
+        } elseif (isset($_GET['modif']) && isset($_GET['modif']) == "modifpost") {
+            $this->update();
+        } elseif (isset($_GET['response']) && isset($_GET['response']) == "delete") {
+            $this->deleteOne();
         } elseif (isset($_GET['etat']) && isset($_GET['etat']) == "newcomment") {
             $this->registerOneComment();
         }else {
@@ -60,6 +68,44 @@ class ControllerPost
         $chapter = $this->postManager->createChapter();
         $this->_view = new View('CreatePost');
         $this->_view->generate(array('chapter' => $chapter));
+    }
+
+    public function updateChap()
+    {
+        if (isset($_GET['updateChapter'])) {
+
+            $this->_view = new View('UpdatePost');
+            $this->_view->generateForm();
+        }
+
+    }
+
+    public function update()
+    {
+
+        $this->postManager = new PostManager();
+        $chapter = $this->postManager->updateChapter();
+        $this->view = new View('UpdateOk');
+        $this->view->generate(array('chapter' => $chapter));
+    }
+
+    public function deleteOnePost()
+    {
+        if (isset($_GET['deletePost'])) {
+
+            $this->view = new View('DeletePost');
+            $this->view->generateForm();
+        }
+
+    }
+
+    public function deleteOne()
+    {
+
+        $this->postManager = new PostManager();
+        $chapter = $this->postManager->deleteChapter();
+        $this->view = new View('DeleteOk');
+        $this->view->generate(array('chapters' => $chapter));
     }
 
     public function createOneComment()
