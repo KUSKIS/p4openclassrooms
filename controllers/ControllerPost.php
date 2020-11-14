@@ -23,6 +23,8 @@ class ControllerPost
             $this->deleteOnePost();
         } elseif (isset($_GET['createComment'])) {
             $this->createOneComment();
+        } elseif (isset($_GET['deleteComment'])) {
+            $this->deleteOneComment();
         } elseif (isset($_GET['status']) && isset($_GET['status']) == "new") {
             $this->edit();
         } elseif (isset($_GET['modif']) && isset($_GET['modif']) == "modifpost") {
@@ -31,7 +33,9 @@ class ControllerPost
             $this->deleteOne();
         } elseif (isset($_GET['etat']) && isset($_GET['etat']) == "newcomment") {
             $this->registerOneComment();
-        }else {
+        } elseif (isset($_GET['answer']) && isset($_GET['answer']) == "supcom") {
+            $this->deleteOneCom();
+        } else {
             $this->chapter();
         }
 
@@ -125,5 +129,22 @@ class ControllerPost
         $comment = $this->commentManager->insertComment();
         $this->_view = new View('CreateComment');
         $this->_view->generate(array('comments' => $comment));
+    }
+
+    public function deleteOneComment()
+    {
+        if (isset($_GET['deleteComment'])) {
+
+            $this->_view = new View('DeleteComment');
+            $this->_view->generateForm();
+        }
+    }
+
+    public function deleteOneCom()
+    {
+        $this->_commentManager = new CommentManager();
+        $comment = $this->_commentManager->deleteCom();
+        $this->_view = new View('DeleteCommentOk');
+        $this->_view->generate(array('comment' => $comment));
     }
 }

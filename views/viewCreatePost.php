@@ -29,5 +29,6 @@
                 </section>
                 <a class="nav-link" href="index.php?tablePost">
                     Voir tableau des chapitres</a>
+                <a class="nav-link" href="index.php?tableComment">Voir tableau des commentaires</a>
 </div>
 </div>
