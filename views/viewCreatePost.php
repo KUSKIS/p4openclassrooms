@@ -27,6 +27,7 @@
                     </div>
 
                 </section>
-
+                <a class="nav-link" href="index.php?tablePost">
+                    Voir tableau des chapitres</a>
 </div>
 </div>
