@@ -26,7 +26,7 @@
                             <td class="text-justify"><?= $chapter->chap_date_modif() ?></td>
                             <td class="text-justify">
                                 <!-- class="text-success" href="Post&updateChapter&id=?= $chapter->id() ?>">modifier</!-->
-                                <a class="text-success" href="Post&updateChapter&id=<?php echo $chapter->id() ?>">modifier</a>
+                                <a class="text-success" href="Post&updateChapter&id=<?= $chapter->id() ?>">modifier</a>
                             </td>
                             <td class="text-justify">
                                 <a class="text-danger" href="Post&deletePost=<?= $chapter->id() ?>">supprimer</a>

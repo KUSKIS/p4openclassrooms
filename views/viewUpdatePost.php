@@ -11,13 +11,13 @@
                         <div class="card-header white d-flex justify-content-between align-items-center py-3">
                             <p class="h5-responsive font-weight-bold mb-0">Bonjour JF<br>Voici ton éditeur de texte</p>
                         </div>
-                        <form action="post&modif=modifpost&id=" method="post" class="card-body">
+                        <form action="post&modif&id=modifpost" method="post" class="card-body">
                             <label for="id">numéro du chapitre</label>
                             <input type="text" name="id" value="" />
                             <label for="chap_title">titre du chapitre</label>
-                            <input type="text" id="exampleForm2" name="chap_title" value=" " placeholder="Titre de ton chapitre" class="form-control rounded-0 mb-3">
+                            <input type="text" id="exampleForm2" name="chap_title" placeholder="Titre de ton chapitre" class="form-control rounded-0 mb-3">
 
-                            <textarea name="chap_content" value="" id="montexte">
+                            <textarea id="montexte" name="chap_content">
 
                             </textarea>
 

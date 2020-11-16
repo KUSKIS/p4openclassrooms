@@ -6,11 +6,11 @@ require_once('models/Model.php');
 class PostManager extends Model
 {
 
-    public function getAll()
+    protected function getAll()
     {
         $db = $this->dbConnect();
         $var = [];
-        $req = $db->query(' SELECT * FROM  chapters  ORDER BY id desc ');
+        $req = $db->query(' SELECT * FROM  chapters  ORDER BY chap_date_modif desc ');
         $req->execute();
         //on crée la variable data qui contient les données
 
@@ -27,14 +27,14 @@ class PostManager extends Model
     protected function getPost()
     {
         $db = $this->dbConnect();
-        $chapter = $db->prepare('  SELECT id, chap_title, chap_content, chap_date_info, chap_date_modif  FROM
+        $req = $db->prepare('  SELECT id, chap_title, chap_content, chap_date_info, chap_date_modif  FROM
          chapters  WHERE id = ? ');
-        $chapter->execute(array($_GET['id']));
+        $req->execute(array($_GET['id']));
         $chap_date_info = date('d-m-Y H:i:s');
         $chap_date_modif = date('d-m-Y H:i:s');
-        if ($chapter->rowCount() == 1);
-        return $chapter->fetch();
-        $chapter->closeCursor();
+        if ($req->rowCount() == 1);
+        return $req->fetch();
+        $req->closeCursor();
     }
 
     protected function createPost()
@@ -45,6 +45,7 @@ class PostManager extends Model
 
         $req->closeCursor();
     }
+
 
     protected function updatePost()
     {

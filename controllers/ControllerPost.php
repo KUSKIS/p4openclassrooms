@@ -17,12 +17,12 @@ class ControllerPost
             throw new Exception("Page introuvable", 1);
         } elseif (isset($_GET['createPost'])) {
             $this->createOnePost();
-        } elseif (isset($_GET['updateChapter'])) {
-            $this->updateChap();
-        } elseif (isset($_GET['deletePost'])) {
+        }  elseif (isset($_GET['deletePost'])) {
             $this->deleteOnePost();
         } elseif (isset($_GET['createComment'])) {
             $this->createOneComment();
+        } elseif (isset($_GET['updateChapter'])) {
+            $this->updateChap();
         } elseif (isset($_GET['deleteComment'])) {
             $this->deleteOneComment();
         } elseif (isset($_GET['status']) && isset($_GET['status']) == "new") {
@@ -57,12 +57,13 @@ class ControllerPost
         }
     }
 
+
     public function createOnePost()
     {
         if (isset($_GET['createPost'])) {
 
-            $this->_view = new View('CreatePost');
-            $this->_view->generateForm();
+            $this->view = new View('CreatePost');
+            $this->view->generateForm();
         }
     }
 
@@ -70,27 +71,26 @@ class ControllerPost
     {
         $this->postManager = new PostManager();
         $chapter = $this->postManager->createChapter();
-        $this->_view = new View('CreatePost');
-        $this->_view->generate(array('chapter' => $chapter));
+        $this->view = new View('CreatePost');
+        $this->view->generate(array('chapter' => $chapter));
     }
 
     public function updateChap()
     {
         if (isset($_GET['updateChapter'])) {
 
-            $this->_view = new View('UpdatePost');
-            $this->_view->generateForm();
+            $this->view = new View('updatePost');
+            $this->view->generateForm();
         }
-
     }
 
     public function update()
     {
+            $this->postManager = new PostManager();
+            $chapter = $this->postManager->updateChapter();
+            $this->view = new View('UpdateOk');
+            $this->view->generate(array('chapter' => $chapter));
 
-        $this->postManager = new PostManager();
-        $chapter = $this->postManager->updateChapter();
-        $this->view = new View('UpdateOk');
-        $this->view->generate(array('chapter' => $chapter));
     }
 
     public function deleteOnePost()
@@ -127,24 +127,24 @@ class ControllerPost
 
         $this->commentManager = new CommentManager();
         $comment = $this->commentManager->insertComment();
-        $this->_view = new View('CreateComment');
-        $this->_view->generate(array('comments' => $comment));
+        $this->view = new View('CreateComment');
+        $this->view->generate(array('comments' => $comment));
     }
 
     public function deleteOneComment()
     {
         if (isset($_GET['deleteComment'])) {
 
-            $this->_view = new View('DeleteComment');
-            $this->_view->generateForm();
+            $this->view = new View('DeleteComment');
+            $this->view->generateForm();
         }
     }
 
     public function deleteOneCom()
     {
-        $this->_commentManager = new CommentManager();
-        $comment = $this->_commentManager->deleteCom();
-        $this->_view = new View('DeleteCommentOk');
-        $this->_view->generate(array('comment' => $comment));
+        $this->commentManager = new CommentManager();
+        $comment = $this->commentManager->deleteCom();
+        $this->view = new View('DeleteCommentOk');
+        $this->view->generate(array('comment' => $comment));
     }
 }
