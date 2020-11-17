@@ -5,7 +5,7 @@
     <!--Section: Content-->
     <section class="p-5 my-md-5 text-center" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/background.jpg); background-size: cover; background-position: center center;">
 
-        <form class="my-5 mx-md-5" action="post&response=delete" method="post">
+        <form class="my-5 mx-md-5" action="post&response&id=delete" method="post">
 
             <div class="row">
                 <div class="col-md-6 mx-auto">
@@ -22,7 +22,7 @@
                             <h3 class="font-weight-bold my-4 pb-2 text-center dark-grey-text">Etes-vous certain de vouloir supprimer le chapitre</h3>
 
                             <div class="text-center">
-                                <input type="text" name="id" />
+                                <input type="text" name="id" value="<?= $chapter['id'] ?>" />
 
                                 <!--<input type="hidden" name="id" value="" />-->
 

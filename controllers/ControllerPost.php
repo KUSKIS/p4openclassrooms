@@ -79,8 +79,10 @@ class ControllerPost
     {
         if (isset($_GET['updateChapter'])) {
 
+            $this->postManager = new PostManager();
+            $chapter = $this->postManager->getChapter($_GET['id']);
             $this->view = new View('updatePost');
-            $this->view->generateForm();
+            $this->view->generate(array('chapter' => $chapter));
         }
     }
 
@@ -97,8 +99,10 @@ class ControllerPost
     {
         if (isset($_GET['deletePost'])) {
 
+            $this->postManager = new PostManager();
+            $chapter = $this->postManager->getChapter($_GET['id']);
             $this->view = new View('DeletePost');
-            $this->view->generateForm();
+            $this->view->generate(array('chapter' => $chapter));
         }
 
     }
@@ -116,9 +120,10 @@ class ControllerPost
     {
 
         if (isset($_GET['createComment'])) {
-
+            $this->postManager = new PostManager();
+            $chapter = $this->postManager->getChapter($_GET['id']);
             $this->view = new View('CreateComment');
-            $this->view->generateForm();
+            $this->view->generate(array('chapters' => $chapter));
         }
     }
 
@@ -135,8 +140,10 @@ class ControllerPost
     {
         if (isset($_GET['deleteComment'])) {
 
+            $this->commentManager = new CommentManager();
+            $comment = $this->commentManager->getOneComment($_GET['id']);
             $this->view = new View('DeleteComment');
-            $this->view->generateForm();
+            $this->view->generate(array('comment', $comment));
         }
     }
 

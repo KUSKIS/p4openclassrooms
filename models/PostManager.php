@@ -60,8 +60,8 @@ class PostManager extends Model
     protected function deletePost()
     {
         $db = $this->dbConnect();
-        $req = $db->prepare(' DELETE FROM chapters WHERE id = ? ');
-        $req->execute(array($_POST['id']));
+        $req = $db->prepare(' DELETE FROM chapters WHERE id = :id ');
+        $req->execute(array('id' => $_POST['id']));
         $req->closeCursor();
     }
 

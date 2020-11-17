@@ -13,11 +13,11 @@
                         </div>
                         <form action="post&modif&id=modifpost" method="post" class="card-body">
                             <label for="id">numéro du chapitre</label>
-                            <input type="text" name="id" value="" />
+                            <input type="text" name="id" value="<?= $chapter['id'] ?>" />
                             <label for="chap_title">titre du chapitre</label>
-                            <input type="text" id="exampleForm2" name="chap_title" placeholder="Titre de ton chapitre" class="form-control rounded-0 mb-3">
+                            <input type="text" id="exampleForm2" name="chap_title" value="<?= $chapter['chap_title'] ?>" placeholder="Titre de ton chapitre" class="form-control rounded-0 mb-3">
 
-                            <textarea id="montexte" name="chap_content">
+                            <textarea id="montexte" name="chap_content" value="<?= $chapter['chap_content'] ?>">
 
                             </textarea>
 

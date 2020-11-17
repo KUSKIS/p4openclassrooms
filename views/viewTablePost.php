@@ -29,7 +29,7 @@
                                 <a class="text-success" href="Post&updateChapter&id=<?= $chapter->id() ?>">modifier</a>
                             </td>
                             <td class="text-justify">
-                                <a class="text-danger" href="Post&deletePost=<?= $chapter->id() ?>">supprimer</a>
+                                <a class="text-danger" href="Post&deletePost&id=<?= $chapter->id() ?>">supprimer</a>
                             </td>
 
                         </tr>
