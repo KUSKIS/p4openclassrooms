@@ -17,8 +17,8 @@
                             <label for="chap_title">titre du chapitre</label>
                             <input type="text" id="exampleForm2" name="chap_title" value="<?= $chapter['chap_title'] ?>" placeholder="Titre de ton chapitre" class="form-control rounded-0 mb-3">
 
-                            <textarea id="montexte" name="chap_content" value="<?= $chapter['chap_content'] ?>">
-
+                            <textarea id="montexte" name="chap_content">
+                                <?= $chapter['chap_content'] ?>
                             </textarea>
 
                             <div class="card-footer white py-3">
