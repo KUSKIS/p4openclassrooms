@@ -24,8 +24,7 @@
                             <td class="text-justify"><?= $comment->com_content() ?></td>
                             <td class="text-justify"><?= $comment->com_date() ?></td>
                             <td class="text-justify">
-
-                                <a class="text-danger" href="Post&deleteComment=<?= $comment->id() ?>">supprimer</a>
+                                <a class="text-danger" href="Post&deleteComment&id=<?= $comment->id() ?>">supprimer</a>
                             </td>
                         </tr>
                     </tbody>
