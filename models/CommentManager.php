@@ -24,7 +24,7 @@ class CommentManager extends Model
     protected function getComment()
     {
         $db = $this->dbconnect();
-        $req = $db->prepare('  SELECT id, com_user, com_date, com_content, chapter_id FROM
+        $req = $db->prepare('  SELECT * FROM
          comments  WHERE id = ? ');
         $req->execute(array($_GET['id']));
         if ($req->rowCount() == 1);
@@ -66,6 +66,14 @@ class CommentManager extends Model
         $req->closeCursor();
     }
 
+    protected function reportOneComment()
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare(' UPDATE comments SET alert = 1 WHERE id = :id');
+        $req->execute(array('id' => $_POST['id']));
+        $req->closeCursor();
+    }
+
 
     public function getAllComments()
     {
@@ -90,6 +98,11 @@ class CommentManager extends Model
     public function deleteCom()
     {
         return $this->deleteComment('comments', 'Comment');
+    }
+
+    public function reportCom()
+    {
+        return $this->reportOneComment('comments', 'Comment');
     }
 
 

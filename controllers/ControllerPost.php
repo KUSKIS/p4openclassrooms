@@ -25,6 +25,8 @@ class ControllerPost
             $this->updateChap();
         } elseif (isset($_GET['deleteComment'])) {
             $this->deleteOneComment();
+        } elseif (isset($_GET['oneComment'])) {
+            $this->comment();
         } elseif (isset($_GET['status']) && isset($_GET['status']) == "new") {
             $this->edit();
         } elseif (isset($_GET['modif']) && isset($_GET['modif']) == "modifpost") {
@@ -35,7 +37,9 @@ class ControllerPost
             $this->registerOneComment();
         } elseif (isset($_GET['answer']) && isset($_GET['answer']) == "supcom") {
             $this->deleteOneCom();
-        } else {
+        } elseif (isset($_GET['report']) && isset($_GET['report']) == "alert") {
+            $this->reportComment();
+        }else {
             $this->chapter();
         }
 
@@ -153,4 +157,28 @@ class ControllerPost
         $this->view = new View('DeleteCommentOk');
         $this->view->generate(array('comment' => $comment));
     }
+
+    public function comment()
+    {
+        if (isset($_GET['oneComment'])) {
+
+            $this->commentManager = new CommentManager();
+            $comment = $this->commentManager->getOneComment($_GET['id']);
+            $this->view = new View('OneComment');
+            $this->view->generate(array('comment' => $comment));
+        }
+
+    }
+
+    public function reportComment()
+    {
+        $this->commentManager = new CommentManager();
+        $comment = $this->commentManager->reportCom();
+        $this->view = new View('alertComment');
+        $this->view->generate(array('comment' => $comment));
+    }
+
+
+
+
 }

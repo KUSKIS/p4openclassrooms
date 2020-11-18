@@ -45,7 +45,9 @@
                                 <p class="font-weight-light dark-grey-text mb-0"><?= $comment->com_content() ?></p>
                             </div>
                             </br>
-                            <button type="button" class="btn btn-fb btn-sm py-1 px-2 m-0 mr-2"><i class="far fa-flag"></i> je signale</button>
+                            <div class="text-right pt-1">
+                                <a href="Post&oneComment&id=<?= $comment->id() ?> " ><button type="button" class="btn btn-fb btn-sm py-1 px-2 m-0 mr-2"><i class="far fa-flag"></i> je signale</button></a>
+                            </div>
                             <hr class="my-3">
                         </div>
                     <?php endforeach; ?>
