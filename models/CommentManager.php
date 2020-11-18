@@ -11,22 +11,33 @@ class CommentManager extends Model
     {
         $db = $this->dbconnect();
         $var = [];
-        $comments = $db->prepare(' SELECT id, com_user, com_date, com_content FROM comments WHERE chapter_id = ? ');
-        $comments->execute(array($_GET['id']));
+        $req = $db->prepare(' SELECT id, com_user, com_date, com_content FROM comments WHERE chapter_id = ? ');
+        $req->execute(array($_GET['id']));
         $com_date = date('d-m-Y H:i:s');
-        while ($data = $comments->fetch(PDO::FETCH_ASSOC)) {
+        while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
             $var[] = new Comment($data);
         }
         return $var;
-        $comments->closeCursor();
+        $req->closeCursor();
+    }
+
+    protected function getComment()
+    {
+        $db = $this->dbconnect();
+        $req = $db->prepare('  SELECT id, com_user, com_date, com_content, chapter_id FROM
+         comments  WHERE id = ? ');
+        $req->execute(array($_GET['id']));
+        if ($req->rowCount() == 1);
+        return $req->fetch();
+        $req->closeCursor();
     }
 
     protected function addComment()
     {
         $db = $this->dbConnect();
-        $comment = $db->prepare(' INSERT INTO comments(chapter_id, com_user, com_content, com_date) VALUES (?, ?, ?, NOW())');
-        $comment->execute(array($_POST['chapter_id'], $_POST['com_user'], $_POST['com_content']));
-        $comment->closeCursor();
+        $req = $db->prepare(' INSERT INTO comments(chapter_id, com_user, com_content, com_date) VALUES (?, ?, ?, NOW())');
+        $req->execute(array($_POST['chapter_id'], $_POST['com_user'], $_POST['com_content']));
+        $req->closeCursor();
     }
 
     protected function listComments()
@@ -50,15 +61,20 @@ class CommentManager extends Model
     protected function deleteComment()
     {
         $db = $this->dbConnect();
-        $req = $db->prepare(' DELETE FROM comments WHERE id = ? ');
-        $req->execute(array($_POST['id']));
+        $req = $db->prepare(' DELETE FROM comments WHERE id = :id ');
+        $req->execute(array('id' => $_POST['id']));
         $req->closeCursor();
     }
 
 
-    public function getComments()
+    public function getAllComments()
     {
         return $this->getPostComments('comments', 'Comment');
+    }
+
+    public function getOneComment()
+    {
+        return $this->getComment('comments', 'Comment');
     }
 
     public function insertComment()
