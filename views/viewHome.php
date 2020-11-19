@@ -84,79 +84,52 @@
 
 <?php foreach ($chapters as $chapter) : ?>
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
 
 
 
->>>>>>> Stashed changes
     <div class="container mt-5 py-5 z-depth-1 grey lighten-4">
         <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
-=======
->>>>>>> Stashed changes
 
-        <div class="container mt-5 py-5 z-depth-1 grey lighten-4">
-            <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
+            <!--Grid row-->
+            <div class="row">
 
-                <!--Grid row-->
-                <div class="row">
+                <!--Grid column-->
+                <div class="col-md-6 mb-4 mb-md-0">
 
-                    <!--Grid column-->
-                    <div class="col-md-6 mb-4 mb-md-0">
+                    <!--Image-->
+                    <div class="view overlay z-depth-1-half">
+                        <img src="public/image/maisonabandonnee.jpg" class="img-fluid" alt="">
 
-<<<<<<< Updated upstream
-                        <a href="Post&id=<?= $chapter->id() ?>">
-=======
-<<<<<<< Updated upstream
-                        <a href="">
->>>>>>> Stashed changes
+                        <a href="post&id= <?= $chapter->id() ?>">
                             <div class="mask rgba-white-light"></div>
                         </a>
                     </div>
-=======
-                        <!--Image-->
-                        <div class="view overlay z-depth-1-half">
-                            <img src="public/image/maisonabandonnee.jpg" class="img-fluid" alt="">
->>>>>>> Stashed changes
-
-                            <a href="Post&id=<?= $chapter->id() ?>">
-                                <div class="mask rgba-white-light"></div>
-                            </a>
-                        </div>
-
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-md-6 mb-4 mb-md-0 p-2">
-
-                        <h3 class="font-weight-bold"><?= $chapter->chap_title() ?></h3>
-
-                        <p class="text-muted">publié le <?= $chapter->chap_date_info() ?><br>
-
-<<<<<<< Updated upstream
-                        <a class="btn btn-info btn-md ml-0" href="Post&id=<?= $chapter->id() ?>" role="button">Lire le chapitre</a>
-=======
-<<<<<<< Updated upstream
-                        <a class="btn btn-info btn-md ml-0" href="" role="button">Lire le chapitre</a>
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-
-                                <a class="btn btn-info btn-md ml-0" href="Post&id=<?= $chapter->id() ?>" role="button">Lire le chapitre</a>
-
-                    </div>
-
-                    <!--Grid column-->
 
                 </div>
-                <!--Grid row-->
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-4 mb-md-0 p-2">
+
+                    <h3 class="font-weight-bold"><?= $chapter->chap_title() ?></h3>
+
+                    <p class="text-muted">publié le <?= $chapter->chap_date_info() ?><br>
+
+
+                        <a class="btn btn-info btn-md ml-0" href="post&id= <?= $chapter->id() ?>" role="button">Lire le chapitre</a>
+
+                </div>
+
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
 
 
 
-            </section>
-            <!--Section: Content-->
-        </div>
+        </section>
+        <!--Section: Content-->
+    </div>
+
 
 <?php endforeach; ?>
