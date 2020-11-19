@@ -8,6 +8,7 @@ class Comment
         $com_date,
         $com_user,
         $com_content,
+        $alert,
         $chapter_id;
 
     public function __construct(array $data)
@@ -58,6 +59,14 @@ class Comment
         }
     }
 
+    public function setAlert($alert)
+    {
+        $alert = (bool) $alert;
+        if ($alert > 0) {
+            $this->alert = $alert;
+        }
+    }
+
     public function set_chapter_id($chapterId)
     {
         $chapterId = (int) $chapterId;
@@ -89,6 +98,11 @@ class Comment
     public function com_content()
     {
         return $this->com_content;
+    }
+
+    public function alert()
+    {
+        return $this->alert;
     }
 
     public function chapter_id()
