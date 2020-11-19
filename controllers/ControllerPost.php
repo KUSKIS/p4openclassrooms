@@ -35,11 +35,19 @@ class ControllerPost
             $this->deleteOne();
         } elseif (isset($_GET['etat']) && isset($_GET['etat']) == "newcomment") {
             $this->registerOneComment();
+<<<<<<< Updated upstream
         } elseif (isset($_GET['answer']) && isset($_GET['answer']) == "supcom") {
             $this->deleteOneCom();
         } elseif (isset($_GET['report']) && isset($_GET['report']) == "alert") {
             $this->reportComment();
         }else {
+=======
+        } elseif (isset($_GET['answer']) && isset($_GET['answer']) == "sup") {
+            $this->deleteOneCom();
+        } elseif (isset($_GET['report']) && isset($_GET['report']) == "alert") {
+            $this->reportComment();
+        } else {
+>>>>>>> Stashed changes
             $this->chapter();
         }
 
@@ -61,7 +69,10 @@ class ControllerPost
         }
     }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     public function createOnePost()
     {
         if (isset($_GET['createPost'])) {
