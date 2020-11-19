@@ -100,37 +100,13 @@
                     <div class="view overlay z-depth-1-half">
                         <img src="public/image/maisonabandonnee.jpg" class="img-fluid" alt="">
 
-<<<<<<< Updated upstream
-                        <a href="">
-=======
                         <a href="post&id= <?= $chapter->id() ?>">
->>>>>>> Stashed changes
                             <div class="mask rgba-white-light"></div>
                         </a>
                     </div>
 
                 </div>
                 <!--Grid column-->
-<<<<<<< Updated upstream
-
-                <!--Grid column-->
-                <div class="col-md-6 mb-4 mb-md-0 p-2">
-
-                    <h3 class="font-weight-bold"><?= $chapter->chap_title() ?></h3>
-
-                    <p class="text-muted">publié le <?= $chapter->chap_date_info() ?><br>
-
-
-                        <a class="btn btn-info btn-md ml-0" href="" role="button">Lire le chapitre</a>
-
-                </div>
-
-                <!--Grid column-->
-
-            </div>
-            <!--Grid row-->
-
-=======
 
                 <!--Grid column-->
                 <div class="col-md-6 mb-4 mb-md-0 p-2">
@@ -148,19 +124,15 @@
 
             </div>
             <!--Grid row-->
->>>>>>> Stashed changes
 
 
         </section>
         <!--Section: Content-->
     </div>
 
-<<<<<<< Updated upstream
-=======
         </section>
         <!--Section: Content-->
     </div>
 
->>>>>>> Stashed changes
 
 <?php endforeach; ?>
