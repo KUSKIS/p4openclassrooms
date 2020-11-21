@@ -169,7 +169,7 @@
                         <a href="index.php?tablePost">Connexion</a>
                     </p>
                     <p>
-                        <a href="post&createPost">Admin</a>
+                        <a href="post&connectAdmin">Admin</a>
 
                     </p>
 
