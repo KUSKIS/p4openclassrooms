@@ -15,6 +15,8 @@ class ControllerPost
     {
         if (isset($url) && count($url) < 1) {
             throw new Exception("Page introuvable", 1);
+        } elseif (isset($_GET['connectAdmin'])) {
+            $this->connectAdmin();
         } elseif (isset($_GET['createPost'])) {
             $this->createOnePost();
         } elseif (isset($_GET['deletePost'])) {
@@ -58,6 +60,15 @@ class ControllerPost
             $comments = $this->commentManager->getAllComments($_GET['id']);
             $this->view = new View('SinglePost');
             $this->view->generate(array('chapter' => $chapter, 'comments' => $comments));
+        }
+    }
+
+    public function connectAdmin()
+    {
+        if (isset($_GET['connectAdmin'])) {
+
+            $this->view = new View('AdminConnexion');
+            $this->view->generateForm();
         }
     }
 
