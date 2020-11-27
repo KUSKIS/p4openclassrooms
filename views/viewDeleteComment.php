@@ -19,16 +19,14 @@
                             <!-- Form -->
 
 
-                            <h3 class="font-weight-bold my-4 pb-2 text-center dark-grey-text">Etes-vous certain de vouloir supprimer le commentaire ?</h3>
+                            <h3 class="font-weight-bold my-4 pb-2 text-center dark-grey-text">Etes-vous certain de vouloir supprimer le commentaire
+                                de <br> "<?= $comment['com_user'] ?>" ?</h3>
 
                             <div class="text-center">
                                 <div class="form-group mb-0">
-                                    <input type="text" name="id" value="<?= $comment['id'] ?>" />
-                                    <p class="font-weight-normal mb-0">Voici Le commentaire de <?= $comment['com_user'] ?></p>
+                                    <input type="hidden" name="id" value="<?= $comment['id'] ?>" />
 
-                                    <p><?= $comment['com_content'] ?></p>
-
-                                    <button type="submit"  class=" btn btn-outline-red btn-rounded my-4 waves-effect" >Oui</button>
+                                    <button type="submit" class=" btn btn-outline-red btn-rounded my-4 waves-effect">Oui</button>
                                     <a href="index.php?tableComment" class="btn btn-outline-green btn-rounded my-4 waves-effect">Retour</a>
                                 </div>
 

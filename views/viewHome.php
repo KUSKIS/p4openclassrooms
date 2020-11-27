@@ -1,5 +1,6 @@
 <?php $this->title = "Jean Forteroche"; ?>
 
+
 <div id="headercontainer">
 
     <div class="view">
@@ -7,13 +8,14 @@
         <div class="mask pattern-6 flex-center waves-effect waves-light">
 
             <h1>EN LIBRAIRIE LE 20 AVRIL</h1><br>
-            <h2 class="white-text">Le nouveau roman de Jean Forteroche</h2><br>
+            <h2 class="h1-responsive text-center white-text ">Le nouveau roman de Jean Forteroche</h2><br>
             <img class="imgview" src="public/image/mini_cover.jpg" class="img-fluid z-depth-1" alt="novel cover">
 
         </div>
     </div>
 
 </div>
+
 
 <!--Section: Content-->
 <section class="px-md-5 mx-md-5 text-center text-lg-left">

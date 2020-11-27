@@ -32,10 +32,21 @@ class CommentManager extends Model
         $req->closeCursor();
     }
 
+    /*public function getCommentToDelete()
+    {
+        $db = $this->dbconnect();
+        $req = $db->prepare('  SELECT * FROM
+         comments  WHERE id = ? ');
+        $req->execute(array($_GET['id']));
+        if ($req->rowCount() == 1);
+        return $req->fetch();
+        $req->closeCursor();
+    }*/
+
     protected function addComment()
     {
         $db = $this->dbConnect();
-        $req = $db->prepare(' INSERT INTO comments(chapter_id, com_user, com_content, com_date) VALUES (?, ?, ?, NOW())');
+        $req = $db->prepare(' INSERT INTO comments(chapter_id, com_user, com_content, alert, com_date) VALUES (?, ?, ?, 0, NOW())');
         $req->execute(array($_POST['chapter_id'], $_POST['com_user'], $_POST['com_content']));
         $req->closeCursor();
     }
@@ -84,6 +95,11 @@ class CommentManager extends Model
     {
         return $this->getComment('comments', 'Comment');
     }
+
+    /*public function getOneCommentToDelete()
+    {
+        return $this->getCommentToDelete('comments', 'Comment');
+    }*/
 
     public function insertComment()
     {

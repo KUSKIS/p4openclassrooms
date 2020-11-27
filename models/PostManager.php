@@ -18,7 +18,6 @@ class PostManager extends Model
             //var contiendra les donnees sous forme d'objet
             $var[] = new Chapter($data);
         }
-
         return $var;
         $req->closeCursor(); //on maintient la requete
 

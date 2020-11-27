@@ -2,19 +2,24 @@
 
 <div class="commentform">
     <p><a class="nav-link" href="index.php">
-            <- Retour à l'accueil </a> </p> <section>
+            <- Retour à l'accueil</a></p>
+            <section>
+                <h2 class="h1-responsive font-weight-bold text-center my-4">Exprimez-vous</h2>
+                <p class="text-center w-responsive mx-auto mb-5">Parce que votre avis m'est précieux et qu’il est susceptible d’intéresser
+                     les autres lecteurs, il vous est possible de laisser un commentaire.</p>
                 <form action="post&etat&id=newcomment" method="post">
                     <div class="card-footer white py-3">
-                        <div class="form-group mb-0">
-                            <label for="chapitre">chapitre : </label>
-                            <input type="text" name="chapter_id" value="<?= $chapter['id'] ?>" />
-                            <label for="user">Pseudo</label>
-                            <input type="text" id="user" name="com_user" />
-                            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2" placeholder="Ecrire un commentaire" name="com_content"></textarea>
+                        <div class="form-group mb-2">
+                            <input type="hidden" name="chapter_id" value="<?= $chapter['id'] ?>" />
+                            <label for="user">Pseudo </label><br>
+                            <input type="text" class="form-control" name="com_user" placeholder="Votre pseudo" required /><br>
+                            <label for="textComment">Commentaire </label>
+                            <textarea class="form-control" rows="3" placeholder="Ecrire un commentaire" name="com_content" required></textarea><br>
                             <div class="text-right pt-1">
-                                <input type=submit />
+                                <input class="btn btn-info" type=submit />
                             </div>
                         </div>
+                    </div>
                 </form>
-                </section>
+            </section>
 </div>

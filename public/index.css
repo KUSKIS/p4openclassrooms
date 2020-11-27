@@ -165,7 +165,9 @@ h4 strong{
 }
 
 /*------------formulaire de confirmation de suppression----------*/
-
+.profil {
+    padding-top: 10%!important;
+}
 .deleteform{
     padding-top: 10%!important;
 }
