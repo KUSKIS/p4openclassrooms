@@ -9,7 +9,6 @@ class ControllerHome
 
     private $PostManager;
     private $commentManager;
-    private $userManager;
     private $view;
 
     public function __construct()
@@ -20,15 +19,13 @@ class ControllerHome
             $this->readAllPosts();
         } elseif (isset($_GET['tableComment'])) {
             $this->listAllComments();
-        } elseif (isset($_GET['connectAdmin'])) {
-            $this->connectAdmin();
         } else {
             $this->listChapters();
         }
 
         $this->chapterManager = new PostManager();
         $this->commentManager = new CommentManager();
-        $this->userManager = new UserManager();
+
     }
 
 
@@ -56,11 +53,6 @@ class ControllerHome
         $this->view->generate(array('comments' => $comments));
     }
 
-    public function connectAdmin()
-    {
-        $this->view = new View('AdminConnexion');
-        $this->view->generate(array());
-    }
 
 
 

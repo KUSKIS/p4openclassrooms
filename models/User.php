@@ -24,6 +24,8 @@ class User
         }
     }
 
+    //setters
+
     public function setId($id)
     {
         $id = (int) $id;
@@ -52,8 +54,6 @@ class User
             $this->email = $email;
         }
     }
-
-
 
     //getters
 

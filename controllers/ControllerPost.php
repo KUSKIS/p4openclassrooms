@@ -4,6 +4,7 @@ require_once('views/View.php');
 require_once('models/CommentManager.php');
 require_once('models/PostManager.php');
 
+
 class ControllerPost
 {
 
@@ -16,6 +17,8 @@ class ControllerPost
     {
         if (isset($url) && count($url) < 1) {
             throw new Exception("Page introuvable", 1);
+        } elseif (isset($_GET['createPost'])) {
+            $this->createOnePost();
         } elseif (isset($_GET['deletePost'])) {
             $this->deleteOnePost();
         } elseif (isset($_GET['createComment'])) {
@@ -26,7 +29,7 @@ class ControllerPost
             $this->deleteOneComment();
         } elseif (isset($_GET['oneComment'])) {
             $this->comment();
-        } elseif (isset($_GET['check']) && isset($_GET['check']) == "ok") {
+        } elseif (isset($_GET['check']) && isset($_GET['check']) == 'ok') {
             $this->checkAdmin();
         } elseif (isset($_GET['status']) && isset($_GET['status']) == "new") {
             $this->edit();
@@ -52,6 +55,7 @@ class ControllerPost
 
     public function chapter()
     {
+
         if (isset($_GET['id'])) {
 
             $this->postManager = new PostManager();
@@ -64,32 +68,6 @@ class ControllerPost
         }
     }
 
-    /*public function connectAdmin()
-    {
-        if (isset($_GET['connectAdmin'])) {
-
-            $this->view = new View('AdminConnexion');
-            $this->view->generate(array());
-        }
-    }*/
-
-    /*public function checkAdmin()
-    {
-        $this->userManager = new UserManager();
-        //$user = $this->userManager->getOneUser();
-        if ($user = $this->userManager->getOneUser($_POST['pseudo'])) {
-            if (password_verify($_POST['pass'], $user['pass'])){
-                //$this->view = new View('CreatePost');
-                //$this->view->generate(array('user' => $user));
-                header('Location: post&createPost' . $user['id']);
-            }
-            else {
-                echo "veuillez complèter";
-            }
-        }
-    }*/
-
-
     public function checkAdmin()
     {
         $this->userManager = new UserManager();
@@ -98,37 +76,35 @@ class ControllerPost
         $pseudo = $_POST['pseudo'];
         $userPasswordIsCorrect = password_verify($_POST['pass'], $user['pass']);
         if ($admin == 0) {
-            echo 'Accès non autorisé !';
+            $this->view = new View('UnauthorizedAccess');
+            $this->view->generate(array());
         } else {
             if ($pseudo != $user['pseudo']) {
-                echo 'Mauvais identifiant ou mot de passe !';
+                $this->view = new View('IncorrectUserPass');
+                $this->view->generate(array('user' => $user));
             } else {
                 if ($userPasswordIsCorrect) {
-                    //session_start();
-                    //$_SESSION['pseudo'] = $pseudo;
-                    //$_SESSION['pass'] = $user['pass'];
-                    //$_SESSION['id'] = $user['id'];
-                    //$_SESSION['pseudo'] = $pseudo;
-                    $_SESSION['id'] = $user['id'];
-                    $_SESSION['pseudo'] = $pseudo;
-                    $this->view = new View('CreatePost');
+                    $this->view = new View('SpaceAdmin');
                     $this->view->generate(array('user' => $user));
                 } else {
-                    echo 'Mauvais identifiant ou mot de passe !';
+                    $this->view = new View('IncorrectUserPass');
+                    $this->view->generate(array('user' => $user));
                 }
             }
         }
-
     }
 
+    public function createOnePost()
+    {
+        $this->view = new View('CreatePost');
+        $this->view->generate(array());
+    }
 
     public function edit()
     {
         $this->postManager = new PostManager();
         $chapter = $this->postManager->createChapter();
-        if (empty($_POST['chap_title']) || empty($_POST['chap_content'])) {
-            echo "Titre et/ou texte manquant(s)";
-        } else {
+        if (isset($_POST['chap_title']) || isset($_POST['chap_content'])) {
             $this->view = new View('AddPostOk');
             $this->view->generate(array('chapter' => $chapter));
         }
