@@ -13,7 +13,6 @@ class CommentManager extends Model
         $var = [];
         $req = $db->prepare(' SELECT id, com_user, com_date, com_content FROM comments WHERE chapter_id = ? ');
         $req->execute(array($_GET['id']));
-        $com_date = date('d-m-Y H:i:s');
         while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
             $var[] = new Comment($data);
         }
@@ -24,30 +23,18 @@ class CommentManager extends Model
     protected function getComment()
     {
         $db = $this->dbconnect();
-        $req = $db->prepare('  SELECT * FROM
-         comments  WHERE id = ? ');
+        $req = $db->prepare('  SELECT * FROM comments  WHERE id = ? ');
         $req->execute(array($_GET['id']));
         if ($req->rowCount() == 1);
         return $req->fetch();
         $req->closeCursor();
     }
 
-    /*public function getCommentToDelete()
-    {
-        $db = $this->dbconnect();
-        $req = $db->prepare('  SELECT * FROM
-         comments  WHERE id = ? ');
-        $req->execute(array($_GET['id']));
-        if ($req->rowCount() == 1);
-        return $req->fetch();
-        $req->closeCursor();
-    }*/
-
     protected function addComment()
     {
         $db = $this->dbConnect();
         $req = $db->prepare(' INSERT INTO comments(chapter_id, com_user, com_content, alert, com_date) VALUES (?, ?, ?, 0, NOW())');
-        $req->execute(array($_POST['chapter_id'], $_POST['com_user'], $_POST['com_content']));
+        $req->execute(array($_POST['chapter_id'], htmlspecialchars($_POST['com_user']), htmlspecialchars($_POST['com_content'])));
         $req->closeCursor();
     }
 
@@ -58,15 +45,12 @@ class CommentManager extends Model
         $req = $db->query(' SELECT * FROM  comments  ORDER BY id desc ');
         $req->execute();
         //on crée la variable data qui contient les données
-
         while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
             //var contiendra les donnees sous forme d'objet
             $var[] = new Comment($data);
         }
-
         return $var;
         $req->closeCursor(); //on maintient la requete
-
     }
 
     protected function deleteComment()
@@ -95,11 +79,6 @@ class CommentManager extends Model
     {
         return $this->getComment('comments', 'Comment');
     }
-
-    /*public function getOneCommentToDelete()
-    {
-        return $this->getCommentToDelete('comments', 'Comment');
-    }*/
 
     public function insertComment()
     {

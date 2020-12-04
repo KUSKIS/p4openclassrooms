@@ -1,6 +1,5 @@
 <?php
 
-//namespace SAB\Testp4\Router;
 
 require_once('views/View.php');
 require_once('controllers/ControllerHome.php');
@@ -39,7 +38,7 @@ class Router
 
                 $controllerClass = "Controller" . $controller;
 
-                //on retrouve du controller voulu
+                //on retrouve le controller voulu
                 $controllerFile = "controllers/" . $controllerClass . ".php";
 
                 if (file_exists($controllerFile)) {

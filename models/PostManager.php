@@ -10,10 +10,9 @@ class PostManager extends Model
     {
         $db = $this->dbConnect();
         $var = [];
-        $req = $db->query(' SELECT * FROM  chapters  ORDER BY chap_date_modif desc ');
+        $req = $db->query(' SELECT * FROM  chapters  ORDER BY id ASC ');
         $req->execute();
         //on crée la variable data qui contient les données
-
         while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
             //var contiendra les donnees sous forme d'objet
             $var[] = new Chapter($data);
@@ -29,8 +28,6 @@ class PostManager extends Model
         $req = $db->prepare('  SELECT id, chap_title, chap_content, chap_date_info, chap_date_modif  FROM
          chapters  WHERE id = ? ');
         $req->execute(array($_GET['id']));
-        $chap_date_info = date('d-m-Y H:i:s');
-        $chap_date_modif = date('d-m-Y H:i:s');
         if ($req->rowCount() == 1);
         return $req->fetch();
         $req->closeCursor();
@@ -41,7 +38,6 @@ class PostManager extends Model
         $db = $this->dbConnect();
         $req = $db->prepare(' INSERT INTO  chapters (chap_title, chap_content, chap_date_info, chap_date_modif) VALUES (?, ?, NOW(), NOW())');
         $req->execute(array($_POST['chap_title'], $_POST['chap_content']));
-
         $req->closeCursor();
     }
 
@@ -52,7 +48,6 @@ class PostManager extends Model
         $req = $db->prepare(' UPDATE chapters SET chap_title = :chap_title, chap_content = :chap_content, chap_date_modif = NOW()
         WHERE id = :id ');
         $req->execute(array('id' => $_POST['id'], 'chap_title' => $_POST['chap_title'], 'chap_content' => $_POST['chap_content']));
-        $chap_date_modif = date('d-m-Y H:i:s');
         $req->closeCursor();
     }
 

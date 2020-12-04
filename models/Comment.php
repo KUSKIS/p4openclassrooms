@@ -76,8 +76,6 @@ class Comment
     }
 
 
-
-
     //getters
 
     public function id()

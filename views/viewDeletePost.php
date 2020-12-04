@@ -1,7 +1,6 @@
 <?php $this->title = "supprimer chapitre"; ?>
 
-
-<div class="deleteform">
+<div class="containwritten">
     <div class="container my-5 px-0 z-depth-1">
         <section class="p-5 my-md-5 text-center" style="background-image: url(public/image/route.jpg); background-size: cover; background-position: center center;">
             <form class="my-5 mx-md-5" action="post&response&id=delete" method="post">
@@ -18,6 +17,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
             </form>
         </section>
     </div>
