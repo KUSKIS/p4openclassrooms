@@ -2,7 +2,10 @@ let formValid = document.getElementById('buttonSend');
 let pseudo = document.getElementById('pseudo');
 let missPseudo = document.getElementById('missPseudo');
 
-formValid.addEventListener('click', validation);
+if (formValid) {
+    formValid.addEventListener('click', validation);
+}
+
 
 function validation(event)
 {
