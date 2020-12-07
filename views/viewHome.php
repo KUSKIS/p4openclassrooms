@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-md-6 mb-4 mb-md-0">
                     <div class="view overlay z-depth-1-half">
-                        <img src="public/image/train.jpg" class="img-fluid" alt="train en Alaska">
+                        <img class="imgtrain" src="public/image/train.jpg" class="img-fluid" alt="train en Alaska">
                         <a href="#">
                             <div class="mask rgba-white-light"></div>
                         </a>

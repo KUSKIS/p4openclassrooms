@@ -102,7 +102,7 @@ h1 {
 
 /*------------mobile responsive------------*/
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 599px) {
 
     #headercontainer h1 {
         font-size: 3em;
@@ -135,5 +135,35 @@ h1 {
 
 
 
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1023px) {
+
+    #headercontainer h1 {
+        left: 6%;
+    }
+    #headercontainer h2 {
+        left: 3%;
+    }
+    .imgtrain {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (min-width: 2000px) {
+
+    #headercontainer h1 {
+        left: 33%;
+    }
+    #headercontainer h2 {
+        left: 30%;
+    }
+    .imgview {
+    width: 15%!important;
+    }
+    .imgtrain {
+        width: 100%;
+    }
 }
 
